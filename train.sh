@@ -1,0 +1,1 @@
+python main_train_psnr.py --opt options/swinir/train_swinir_sr_classical.json
