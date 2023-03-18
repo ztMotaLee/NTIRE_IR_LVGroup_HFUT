@@ -7,4 +7,5 @@
 `./train.sh`
 Attention that you should change the path of datasets.
 ### Test
+Our pretrained models can be downloaded from [here]().
 `python main_test_swinir.py --task classical_sr --scale 4 --training_patch_size 48 --model_path your path --folder_lq your low-resolution image path --folder_gt your high-resolution image path`
