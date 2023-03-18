@@ -1,2 +1,49 @@
-# GlobalSwin
-Our code for NTIRE Workshop and Challenges @ CVPR 2023   Image Super-Resolution (x4) Challenge.
+# MIPI Challenge 2022 Team LVGroup_HFUT
+
+> This repository is the official [MIPI Challenge 2022](http://mipi-challenge.org/#) implementation of Team LVGroup_HFUT in [Image Restoration for Under-display Camera](https://codalab.lisn.upsaclay.fr/competitions/4874).
+> This repository is the official [NTIRE Challenge 2023](https://cvlai.net/ntire/2023/#) implementation of Team LVGroup_HFUT in [Image Super-Resolution (x4) Challenge](https://codalab.lisn.upsaclay.fr/competitions/10251).
+> The restoration results of the tesing images can be downloaded from [here](https://pan.baidu.com/s/10Te4V1q4wRXi3x_MzvIHpA?pwd=0ino).
+> The restoration results of the tesing images can be downloaded from [here]().
+## Usage
+
+### Single image inference
+
+`cd your/script/path`
+
+`python infer.py --data_source your/dataset/path --model_path ../pretrained/optimal.pth --save_image --experiment your-experiment`
+
+### Train
+
+`cd your/script/path`
+
+`python train.py --data_source your/dataset/path --experiment your-experiment`
+
+`./train.sh
+Attention that you should change the path of datasets.
+### Test
+`cd your/script/path`
+
+`python test.py --data_source your/dataset/path --model_path ../pretrained/optimal.pth --experiment your-experiment`
+
+### Dataset format
+
+> The format of the dataset should meet the following code in datasets.py:
+`self.img_paths = sorted(glob.glob(data_source + '/' + mode + '/input' + '/*.*'))`
+
+`self.gt_paths = sorted(glob.glob(data_source + '/'  + mode + '/GT' + '/*.*'))`
+
+> or
+`self.img_paths = sorted(glob.glob(data_source + '/' + 'test' + '/input' + '/*.*'))`
+
+***data_source*** is given by the command line.
+
+***mode*** can be 'train' or 'val'.
+
+### Path to saving results
+
+***when training and validating:***  the default path is `'../results/your-experiment'`
+
+***when testing:***  the default path is `'../outputs/your-experiment/test'`
+
+***when inferring:***  the default path is `'../outputs/your-experiment/infer'`
+`python main_test_swinir.py --task classical_sr --scale 4 --training_patch_size 48 --model_path your path --folder_lq your low-resolution image path --folder_gt your high-resolution image path`
